@@ -2,6 +2,10 @@ GET http://localhost:3000/users
 
 ###
 
+GET http://localhost:3000/users?limit=2&offset=2&order=oldest
+
+###
+
 GET http://localhost:3000/users/8dd2b0f1-726d-4d52-a88b-e8da1cff4ac9
 
 ###

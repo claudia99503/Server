@@ -9,7 +9,21 @@ const app = express();
 app.use(express.json());
 
 app.get('/users', async (req, res) => {
-  const users = await prisma.user.findMany();
+  const { offset = 0, limit = 10, order = 'newest' } = req.query;
+  let orderBy;
+  switch (order) {
+    case 'oldest':
+      orderBy
+      break;
+    case 'newest':
+    default:
+      orderBy = { createdAt: 'desc' };
+  }
+  const users = await prisma.user.findMany({
+    orderBy,
+    skip: parseInt(offset),
+    take: parseInt(limit),
+  });
   res.send(users);
 });
 
