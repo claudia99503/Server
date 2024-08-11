@@ -18,7 +18,7 @@ Content-Type: application/json
 
 ###
 
-PATCH http://localhost:3000/users/b8f11e76-0a9e-4b3f-bccf-8d9b4fbf331e
+PATCH http://localhost:3000/users/3ca78837-8fc4-44f0-97ba-a38437ccc514
 Content-Type: application/json
 
 {
@@ -27,5 +27,5 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/users/b8f11e76-0a9e-4b3f-bccf-8d9b4fbf331e
+DELETE http://localhost:3000/users/3ca78837-8fc4-44f0-97ba-a38437ccc514
 
