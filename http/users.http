@@ -33,3 +33,7 @@ Content-Type: application/json
 
 DELETE http://localhost:3000/users/3ca78837-8fc4-44f0-97ba-a38437ccc514
 
+###
+
+GET http://localhost:3000/users/3ca78837-8fc4-44f0-97ba-a38437ccc514/saved-products
+

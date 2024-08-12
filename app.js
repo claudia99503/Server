@@ -105,6 +105,18 @@ app.delete('/users/:id', asyncHandler(async (req, res) => {
   res.sendStatus(204);
 }));
 
+
+app.get('/users/:id', asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const user = await prisma.user.findUniqueOrThrow({
+    where: { id },
+    include: {
+      savedProducts: true,
+    },
+  });
+  res.send(user.savedProducts);
+}));
+
 /*********** products ***********/
 
 app.get('/products', asyncHandler(async (req, res) => {
