@@ -191,7 +191,15 @@ app.get('/orders/:id', asyncHandler(async (req, res) => {
   const { id } = req.params;
   const order = await prisma.order.findUniqueOrThrow({
     where: { id },
+    include: {
+      orderItems: true,
+    },
   });
+  let total = 0;
+  order.orderItems.forEach((orderItem) => {
+    total += orderItem.unitPrice * orderItem.quantity;
+  });
+  order.total = total;
   res.send(order);
 }));
 
