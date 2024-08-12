@@ -18,15 +18,21 @@ Content-Type: application/json
   "firstName": "유진",
   "lastName": "김",
   "address": "충청북도 청주시 북문로 210번길 5",
+  "userPreference": {
+    "receiveEmail": false
+  }
 }
 
 ###
 
-PATCH http://localhost:3000/users/3ca78837-8fc4-44f0-97ba-a38437ccc514
+PATCH http://localhost:3000/users/73cb9639-d8b7-4f11-9a62-53f4187f3f11
 Content-Type: application/json
 
 {
-  "address": "서울특별시 강남구 무실로 234번길 45-6"
+  "email": "yjkim2@example.com",
+  "userPreference": {
+    "receiveEmail": true
+  }
 }
 
 ###

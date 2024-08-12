@@ -81,8 +81,17 @@ app.get('/users/:id', asyncHandler(async (req, res) => {
 
 app.post('/users', asyncHandler(async (req, res) => {
   assert(req.body, CreateUser);
+  const { userPreference, ...userFields } = req.body;
   const user = await prisma.user.create({
-    data: req.body,
+    data: {
+      ...userFields,
+      userPreference: {
+        create: userPreference,
+      },
+    },
+    include: {
+      userPreference: true,
+    },
   });
   res.status(201).send(user);
 }));
