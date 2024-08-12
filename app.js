@@ -56,6 +56,9 @@ app.get('/users', asyncHandler(async (req, res) => {
     orderBy,
     skip: parseInt(offset),
     take: parseInt(limit),
+    include: {
+      userPreference: true,
+    },
   });
   res.send(users);
 }));
@@ -64,6 +67,9 @@ app.get('/users/:id', asyncHandler(async (req, res) => {
   const { id } = req.params;
   const user = await prisma.user.findUniqueOrThrow({
     where: { id },
+    include: {
+      userPreference: true,
+    },
   });
   res.send(user);
 }));
