@@ -99,9 +99,18 @@ app.post('/users', asyncHandler(async (req, res) => {
 app.patch('/users/:id', asyncHandler(async (req, res) => {
   assert(req.body, PatchUser);
   const { id } = req.params;
+  const { userPreference, ...userFields } = req.body;
   const user = await prisma.user.update({
     where: { id },
-    data: req.body,
+    data: {
+      ...userFields,
+      userPreference: {
+        update: userPreference,
+      },
+    },
+    include: {
+      userPreference: true,
+    },
   });
   res.send(user);
 }));
